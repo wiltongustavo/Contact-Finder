@@ -1,4 +1,4 @@
-package com.contact.finder.repository;
+package com.contact.finder.entities;
 
 import java.util.Date;
 
