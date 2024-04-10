@@ -1,30 +1,23 @@
 package com.contact.finder.DTO;
 
-import java.util.Date;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
+import java.time.LocalDate;
 import java.util.List;
-
 
 import org.hibernate.validator.constraints.Length;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ContactDTO {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private Long id;
 	
 	@NotBlank(message = "Nome não pode ser vazio.")
@@ -40,9 +33,8 @@ public class ContactDTO {
 	@Pattern(regexp = "\\(?(\\d{2})\\)?[-\\s]?\\d{4,5}[-\\s]?\\d{4}", message = "Número de telefone inválido")
 	private String telefone;
 	
-	private Date data;
+	private LocalDate dataNascimento;
 	
-	@OneToMany
 	private List<ListaEnderecoDTO> endereco;
 	
 

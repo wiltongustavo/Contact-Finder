@@ -1,7 +1,7 @@
 package com.contact.finder.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -36,7 +36,7 @@ public class ContatoEntity {
 	private String telefone;
 
 	@Column(name = "data_nascimento")
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 
 	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
 	private List<EnderecoEntity> endereco = new ArrayList<EnderecoEntity>();
