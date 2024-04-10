@@ -1,4 +1,4 @@
-package com.contact.finder.ContactFinder;
+package com.contact.finder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
