@@ -1,40 +1,43 @@
 package com.contact.finder.entities;
 
+import org.hibernate.annotations.ForeignKey;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
 @Table(name = "endereco")
-public class EnderecoEntitie {
+public class EnderecoEntity {
 	
-	public EnderecoEntitie(){
-		
-	}
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-	@Column(name = "rua")
+	
+	@NotBlank
     private String rua;
 
-	@Column(name = "numero")
+	@NotBlank
     private String numero;
 	
-	@Column(name = "cep")
+	@NotBlank
     private String cep;
 
-    @ManyToOne
-    @JsonIgnore
-    private ContatoEntitie contato;
+	
+	@ManyToOne
+	@JsonIgnore
+    private ContatoEntity contact;
 }

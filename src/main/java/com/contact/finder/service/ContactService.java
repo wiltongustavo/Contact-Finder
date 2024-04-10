@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import com.contact.finder.entities.ContatoEntitie;
+import com.contact.finder.entities.ContatoEntity;
 import com.contact.finder.repository.ContactRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,22 +19,22 @@ public class ContactService {
 	
 	
 	
-	public List<ContatoEntitie> getAllContact(){
+	public List<ContatoEntity> getAllContact(){
 		log.info("Service buscar todos");
 		return contactRepository.findAll();
 	}
 	
-	public Optional<ContatoEntitie> getContactById(Long id){
+	public Optional<ContatoEntity> getContactById(Long id){
 		log.info("Service buscando pelo id: " + id);
 		return contactRepository.findById(id);
 	}
 	
-	public ContatoEntitie createContact(ContatoEntitie contact) {
+	public ContatoEntity createContact(ContatoEntity contact) {
 		log.info("Service passando dados do contato para salvar");
 		return contactRepository.save(contact);
 	}
 	
-	public ContatoEntitie updateContact(Long id, ContatoEntitie updateContact) {
+	public ContatoEntity updateContact(Long id, ContatoEntity updateContact) {
 		if(contactRepository.existsById(id)) {
 			log.info("Service - Validando se o id: " + id + " existe");
 			updateContact.setId(id);
