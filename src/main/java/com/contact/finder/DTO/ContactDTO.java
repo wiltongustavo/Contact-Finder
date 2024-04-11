@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContactDTO {
 	
+	
 	private Long id;
 	
 	@NotBlank(message = "Nome não pode ser vazio.")

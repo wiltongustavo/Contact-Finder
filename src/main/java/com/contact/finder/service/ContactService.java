@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.contact.finder.DTO.ContactDTO;
 import com.contact.finder.entities.ContatoEntity;
+import com.contact.finder.exception.CustomExceptionResponse;
 import com.contact.finder.repository.ContactRepository;
 
 import lombok.AllArgsConstructor;
