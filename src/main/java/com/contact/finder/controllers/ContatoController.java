@@ -106,9 +106,4 @@ public class ContatoController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@GetMapping("/strings")
-	public String getString() {
-		return "Testando chamada do endpoint";
-	}
-
 }
