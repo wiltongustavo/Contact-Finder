@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.contact.finder.DTO.ContactDTO;
 import com.contact.finder.entities.ContatoEntity;
+import com.contact.finder.exception.CustomExceptionNoContent;
 import com.contact.finder.exception.CustomExceptionResponse;
 import com.contact.finder.repository.ContactRepository;
 
@@ -26,18 +27,27 @@ public class ContactService {
 
 	public List<ContactDTO> getAllContact() {
 		log.info("Service buscar todos");
-		final var contatoLista = contactRepository.findAll();
+		final List<ContatoEntity> contatoLista = contactRepository.findAll();
+		if (contatoLista.isEmpty()) {
+			throw new CustomExceptionNoContent("Nenhum conteudo encontrado");
+		} else {
+			return contatoLista.stream().map(entidade -> modelMapper.map(entidade, ContactDTO.class))
+					.collect(Collectors.toList());
 
-		return contatoLista.stream().map(entidade -> modelMapper.map(entidade, ContactDTO.class))
-				.collect(Collectors.toList());
+		}
 
 	}
 
 	public Optional<ContactDTO> getContactById(Long id) {
 		log.info("Service buscando pelo id: " + id);
 		Optional<ContatoEntity> contatoUnico = contactRepository.findById(id);
-	    Optional<ContactDTO> contatoDTO = contatoUnico.map(entity -> modelMapper.map(entity, ContactDTO.class));
-		return contatoDTO;
+		if (contatoUnico.isPresent()) {
+
+			Optional<ContactDTO> contatoDTO = contatoUnico.map(entity -> modelMapper.map(entity, ContactDTO.class));
+			return contatoDTO;
+		} else {
+			throw new CustomExceptionResponse("Erro ao buscar o contato pelo ID: " + id);
+		}
 	}
 
 	public ContactDTO createContact(ContactDTO contatoDTO) {
@@ -57,7 +67,7 @@ public class ContactService {
 			return modelMapper.map(ctConvertido, ContactDTO.class);
 		} else {
 			log.info("Service - Id: " + id + "inexistente");
-			throw new IllegalArgumentException("Contact with id " + id + " does not exist");
+			throw new CustomExceptionResponse("Erro ao buscar o contato pelo ID: " + id);
 		}
 	}
 

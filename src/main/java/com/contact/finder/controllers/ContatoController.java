@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.contact.finder.DTO.ContactDTO;
 import com.contact.finder.entities.ContatoEntity;
+import com.contact.finder.exception.CustomExceptionResponse;
 import com.contact.finder.service.ContactService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,8 +30,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/contatos")
 @CrossOrigin(origins = "*")
+@RequestMapping("/contatos")
 @Tag(name = "Contatos", description = "API para gerenciar contatos")
 public class ContatoController {
 
@@ -58,8 +59,9 @@ public class ContatoController {
     })
 	public ResponseEntity<ContactDTO> buscarContato(@PathVariable Long id) {
 		Optional<ContactDTO> contact = contact = contactService.getContactById(id);
-		log.info("Buscando um unico contato através do id: " + id);
-		return contact.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+
+			log.info("Buscando um unico contato através do id: " + id);
+			return contact.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
 	}
 
 	@PostMapping
