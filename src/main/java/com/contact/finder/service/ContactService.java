@@ -54,7 +54,7 @@ public class ContactService {
 		log.info("Service passando dados do contato para salvar");
 		final var contatoEntity = modelMapper.map(contatoDTO, ContatoEntity.class);
 		final var ctConvertido = contactRepository.save(contatoEntity);
-		log.info("Contato" + contatoDTO.getNome() + "cadastrado com sucesso");
+		log.info("Contato " + contatoDTO.getNome() + " cadastrado com sucesso");
 		return modelMapper.map(ctConvertido, ContactDTO.class);
 	}
 
