@@ -1,14 +1,11 @@
 package com.contact.finder.entities;
 
-import org.hibernate.annotations.ForeignKey;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -39,5 +36,5 @@ public class EnderecoEntity {
 	
 	@ManyToOne
 	@JsonIgnore
-    private ContatoEntity contact;
+    private ContatoEntity contato;
 }

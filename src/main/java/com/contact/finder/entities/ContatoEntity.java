@@ -38,12 +38,12 @@ public class ContatoEntity {
 	@Column(name = "data_nascimento")
 	private LocalDate dataNascimento;
 
-	@OneToMany(mappedBy = "contact", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "contato", cascade = CascadeType.ALL)
 	private List<EnderecoEntity> endereco = new ArrayList<EnderecoEntity>();
 
 
 	public void setEndereco(List<EnderecoEntity> endereco) {
-		endereco.forEach(end -> end.setContact(this));
+		endereco.forEach(end -> end.setContato(this));
 		this.endereco = endereco;
 
 	}

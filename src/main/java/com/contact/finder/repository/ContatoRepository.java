@@ -7,6 +7,6 @@ import com.contact.finder.entities.ContatoEntity;
 
 
 @Repository
-public interface ContactRepository extends JpaRepository<ContatoEntity, Long>{
+public interface ContatoRepository extends JpaRepository<ContatoEntity, Long>{
 
 }

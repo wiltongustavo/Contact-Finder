@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContactDTO {
+public class ContatoDTO {
 	
 	
 	private Long id;
@@ -36,7 +36,7 @@ public class ContactDTO {
 	
 	private LocalDate dataNascimento;
 	
-	private List<ListaEnderecoDTO> endereco;
+	private List<EnderecoDTO> endereco;
 	
 
 }
