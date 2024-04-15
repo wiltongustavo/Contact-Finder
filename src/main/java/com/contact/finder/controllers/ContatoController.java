@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://contact-finder-production.up.railway.app")
 @RequestMapping("/contatos")
 @Tag(name = "Contatos", description = "API para gerenciar contatos")
 public class ContatoController {
