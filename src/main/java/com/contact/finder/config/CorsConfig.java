@@ -12,7 +12,7 @@ public class CorsConfig {
 	        return new WebMvcConfigurer() {
 	            @Override
 	            public void addCorsMappings(CorsRegistry registry) {
-	                registry.addMapping("/contatos") 
+	                registry.addMapping("/**") 
 	                        .allowedOrigins("https://contact-finder-production.up.railway.app");
 	            }
 	        };
